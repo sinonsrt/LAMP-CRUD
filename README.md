@@ -13,5 +13,6 @@ na porta localhost:8081!
 
 
 Não consegui terminar funções de editar e excluir!
+Comecei a mexer recentemente com Docker e não sabia configurar o .htaccess
 Muito obrigado pela oportunidade!
 Tenho muita vontade de um dia fazer parte do time Gazin! 
