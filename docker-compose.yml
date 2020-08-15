@@ -1,0 +1,41 @@
+version: "3"
+
+services:
+    php:
+        build:
+            context: ./php 
+            dockerfile: Dockerfile
+        container_name: crud-php 
+        volumes:
+            - ./src:/var/www/html/ 
+        ports: 
+            - "8081:80"
+        links: 
+            - mysql
+
+    phpmyadmin:
+        build:
+            context: ./phpmyadmin
+            dockerfile: Dockerfile
+        container_name: crud-phpmyadmin
+        restart: always
+        volumes:
+            - /sessions
+        ports:
+            - "8080:80"
+        links:
+            - mysql
+        environment:
+            - PMA_ARBITRARY=1 
+
+    mysql:
+        image: mysql:5.7 
+        container_name: crud-mysql
+        restart: always 
+        volumes:
+            - /var/lib/mysql
+        ports:
+            - "3306:3306" 
+        environment:
+            - MYSQL_ROOT_PASSWORD=root 
+            - MYSQL_DATABASE=crudg 
